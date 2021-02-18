@@ -6,6 +6,8 @@ import numpy as np 	#data structure
 import pandas as pd  #manipulating data
 import requests 	#to pull in HTML
 from bs4 import BeautifulSoup as Soup 	#for parsing
+from time import sleep #need to stop the code from continuously pulling too much data from a website, resulting in a ban
+from random import randint
 
 # Next create columns with names using pandas
 
@@ -23,6 +25,7 @@ for page in range(0,100):
     P_url = requests.get(url.format(10*page))
     P_html = P_url.text
     P_soup = Soup(P_html, 'html.parser')
+    sleep(randint(2,10))
 
 # Define containers based on HTML and what you want to pull
 
